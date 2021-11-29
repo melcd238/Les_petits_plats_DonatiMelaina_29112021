@@ -11,3 +11,8 @@ recipes.forEach((recipe) => {
   });
 
 // Affichage des listes des dropdown 
+let ingredientArray = [];
+let ustensilesArray = [];
+let appareilArray = [];
+
+
