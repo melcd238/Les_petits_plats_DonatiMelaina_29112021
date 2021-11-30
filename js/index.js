@@ -1,5 +1,5 @@
 import { recipes } from "./data/recipes.js";
-import { ingredientArray , ustensilesArray, appareilArray } from './utils/sortList.js'
+import { ingredientArray , appareilArray , ustensilesArray } from './utils/sortList.js'
 import DisplayRecipes from "./class/displayRecipes.js";
 import DisplayList from "./class/displayList.js";
 
@@ -12,5 +12,5 @@ recipes.forEach((recipe) => {
   });
 
 // Affichage des listes
-let listLi = new DisplayList(ingredientArray , ustensilesArray, appareilArray);
-listLi.createListLi();
+let listLiIngredient = new DisplayList(ingredientArray);
+listLiIngredient.createIngredientsList();

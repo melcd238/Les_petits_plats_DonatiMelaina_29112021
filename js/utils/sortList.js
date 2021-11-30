@@ -7,11 +7,13 @@ let appareilArray = [];
 
 const getAllIngredient = function(recipes){
     let allIngredient = [];
-    recipes.forEach((recipe) =>{
-        ingredientArray.push(recipe.ingredients[0].ingredient)
+    recipes.forEach((recipe) => {
+       recipe.ingredients.forEach((ingredient) =>{
+           allIngredient.push(ingredient.ingredient)
+       })
     })
-    allIngredient = Array.from(new Set(ingredientArray))
-    ingredientArray = allIngredient
+    ingredientArray = Array.from(new Set(allIngredient))
+    console.log(ingredientArray)
     return ingredientArray
 
 }
@@ -19,20 +21,18 @@ const getAllIngredient = function(recipes){
 const getAllUstensils = function (recipes){
     let allustensiles = [];
     recipes.forEach((recipe) =>{
-        ustensilesArray.push(recipe.ustensils)
+        allustensiles.push(recipe.ustensils)
    })
-   allustensiles = [...new Set([].concat(...ustensilesArray))]
-   ustensilesArray = allustensiles
-   return  ustensilesArray
+   ustensilesArray = [...new Set([].concat(...allustensiles))]
+   return   ustensilesArray 
 }
 
 const getAllAppliance = function(recipes){
     let allAppliance = [];
     recipes.forEach((recipe) =>{
-        appareilArray.push(recipe.appliance)
+        allAppliance.push(recipe.appliance)
    })
-   allAppliance = Array.from(new Set(appareilArray))
-   appareilArray = allAppliance
+   appareilArray = Array.from(new Set(allAppliance))
    return appareilArray
 }
 
