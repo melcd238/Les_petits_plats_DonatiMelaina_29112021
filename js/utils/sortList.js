@@ -38,18 +38,8 @@ getAllIngredient(recipes)
 getAllAppliance(recipes)
 getAllUstensils(recipes)
 
-function getAll (recipes){
-    getAllIngredient(recipes)
-    getAllAppliance(recipes)
-    getAllUstensils(recipes)  
-}
 
-console.log(ingredientArray)
-console.log(ustensilesArray)
-console.log(appareilArray )
-
-
-export { ingredientArray , ustensilesArray, appareilArray , getAll }
+export { ingredientArray , ustensilesArray, appareilArray }
 
 
 

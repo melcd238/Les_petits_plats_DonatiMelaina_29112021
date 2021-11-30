@@ -1,10 +1,7 @@
 *, ::after, ::before {
     box-sizing: border-box;
 }
-body{
-    width: 80%;
-    margin: auto;
-}
+
 ul{
     margin: 0;
     padding: 0;
@@ -79,7 +76,13 @@ header{
     top:0;
     left: 0;
     width: 672px;
+    z-index: 100;
 }
+.itemLi{
+    margin-left: 20px;
+    cursor:pointer;
+}
+
 .dropdown-search-list input{
   width: 100%;
   height: 69px;
@@ -96,8 +99,8 @@ header{
    display: none;
 }
 .card{
-    width: 410px;
-    height: 420px;
+    width: 400px;
+    height: 430px;
     border: 1px solid rgba(0,0,0,0.08);
     border-radius: 5px;
     margin-bottom: 20px;
