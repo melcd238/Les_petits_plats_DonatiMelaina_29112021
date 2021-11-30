@@ -1,6 +1,10 @@
 *, ::after, ::before {
     box-sizing: border-box;
 }
+body{
+    width: 80%;
+    margin: auto;
+}
 ul{
     margin: 0;
     padding: 0;
@@ -38,12 +42,14 @@ header{
 }
 .tags{
     margin-top: 25px;
+    margin-right: 25px;
 }
 .tag{
     margin-left: 10px;
     height: 37px;
     border-radius: 5px;
     line-height: 37px;
+    text-align: center;
 }
 .search-btns{
     margin-top: 24px;
@@ -90,10 +96,11 @@ header{
    display: none;
 }
 .card{
-    width: 380px;
-    height: 390px;
+    width: 410px;
+    height: 420px;
     border: 1px solid rgba(0,0,0,0.08);
     border-radius: 5px;
+    margin-bottom: 20px;
 }
 .card-top{
     width: 100%;
@@ -106,6 +113,9 @@ header{
 .recette-container{
     margin-top: 20px;
     margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
 .title{
     display: flex;
@@ -113,6 +123,7 @@ header{
 }
 h2{
     font-size: 18px;
+    width: 70%;
 }
 h2 img{
     padding-left: 180px;
@@ -126,6 +137,7 @@ h2 img{
 }
 .preparation{
     width: 50%;
+    padding-left:12px;
 }
 .list-ingredient{
     width: 50%;

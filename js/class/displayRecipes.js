@@ -34,7 +34,7 @@ export default class DisplayRecipes {
                     </ul>
                 </div>
                 <div class="preparation">
-                    <p> ${this.description.substring(0, 180)}... </p>
+                    <p> ${this.description.substring(0, 178)}... </p>
                 </div>
 
             </div>
