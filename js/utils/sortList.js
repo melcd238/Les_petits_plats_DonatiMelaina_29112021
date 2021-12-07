@@ -33,13 +33,19 @@ const getAllAppliance = function(recipes){
    appareilArray = Array.from(new Set(allAppliance))
    
 }
+const getAll = function(recipes){
+
+getAllIngredient(recipes)
+getAllAppliance(recipes)
+getAllUstensils(recipes)
+}
 
 getAllIngredient(recipes)
 getAllAppliance(recipes)
 getAllUstensils(recipes)
 
 
-export { ingredientArray , ustensilesArray, appareilArray }
+export { ingredientArray , ustensilesArray, appareilArray, getAll }
 
 
 
