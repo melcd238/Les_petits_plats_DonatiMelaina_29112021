@@ -43,23 +43,22 @@ lis.forEach((li) => li.addEventListener('click',(e) =>{
   tagsArray.push(e.target.dataset.value)
   console.log(tagsArray);
      if(e.target.classList.contains('liIngredient')){
-       tagsContainer.innerHTML = `${tagsArray.map((tag)=> 
-        `<div class="col-sm-auto btn-primary tag" data-value='${tag}'>${tag} <img src="/img/cross.svg" alt="croix de fermeture du tag" class="crossTag"> </div>`
-        ).join("")}`;
+       tagsContainer.innerHTML += 
+        `<div class="col-sm-auto btn-primary tag" data-value='${e.target.dataset.value}'>${e.target.textContent} <img src="/img/cross.svg" alt="croix de fermeture du tag" class="crossTag"> </div>`
        // ferme la dropdown
        listIngredient.classList.add('hide');
      }
      if(e.target.classList.contains('liAppliance')){
-      tagsContainer.innerHTML = `${tagsArray.map((tag)=> 
-        `<div class="col-sm-auto btn-success tag" data-value='${tag}'>${tag} <img src="/img/cross.svg" alt="croix de fermeture du tag" class="crossTag"> </div>`
-        ).join("")}`;
+      tagsContainer.innerHTML +=  
+        `<div class="col-sm-auto btn-success tag" data-value='${e.target.dataset.value}'>${e.target.textContent} <img src="/img/cross.svg" alt="croix de fermeture du tag" class="crossTag"> </div>`
+       ;
         // ferme la dropdown
         listAppareil.classList.add('hide');
      }
      if(e.target.classList.contains('liUstensil')){
-      tagsContainer.innerHTML = `${tagsArray.map((tag)=> 
-        `<div class="col-sm-auto btn-danger tag" data-value='${tag}'>${tag} <img src="/img/cross.svg" alt="croix de fermeture du tag" class="crossTag"> </div>`
-        ).join("")}`;
+      tagsContainer.innerHTML +=
+        `<div class="col-sm-auto btn-danger tag" data-value='${e.target.dataset.value}'>${e.target.textContent} <img src="/img/cross.svg" alt="croix de fermeture du tag" class="crossTag"> </div>`
+       ;
         // ferme la dropdown
         listUstensil.classList.add('hide');
      }
