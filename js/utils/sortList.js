@@ -12,7 +12,7 @@ const getAllIngredient = function(recipes){
            allIngredient.push(ingredient.ingredient)
        })
     })
-    ingredientArray =  Array.from(new Set(allIngredient))
+    return ingredientArray =  Array.from(new Set(allIngredient))
     
 }
 
@@ -21,7 +21,7 @@ const getAllUstensils = function (recipes){
     recipes.forEach((recipe) =>{
         allustensiles.push(recipe.ustensils)
    })
-   ustensilesArray = [...new Set([].concat(...allustensiles))]
+   return ustensilesArray = [...new Set([].concat(...allustensiles))]
    
 }
 
@@ -30,22 +30,25 @@ const getAllAppliance = function(recipes){
     recipes.forEach((recipe) =>{
         allAppliance.push(recipe.appliance)
    })
-   appareilArray = Array.from(new Set(allAppliance))
+  return appareilArray = Array.from(new Set(allAppliance))
    
 }
-const getAll = function(recipes){
-
 getAllIngredient(recipes)
 getAllAppliance(recipes)
 getAllUstensils(recipes)
+
+function getAllList (recipes){
+    ingredientArray = getAllIngredient(recipes);
+    appareilArray = getAllAppliance(recipes);
+    ustensilesArray = getAllUstensils(recipes);
+
+    let getAll = [ingredientArray, appareilArray, ustensilesArray]
+
+    return getAll
+
 }
 
-getAllIngredient(recipes)
-getAllAppliance(recipes)
-getAllUstensils(recipes)
-
-
-export { ingredientArray , ustensilesArray, appareilArray, getAll }
+export { ingredientArray , ustensilesArray, appareilArray, getAllList }
 
 
 

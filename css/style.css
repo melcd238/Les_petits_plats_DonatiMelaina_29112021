@@ -110,6 +110,9 @@ header{
 .hide{
    display: none;
 }
+.crossTag{
+    cursor: pointer;
+}
 .card{
     width: 400px;
     height: 430px;
