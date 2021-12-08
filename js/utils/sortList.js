@@ -48,7 +48,7 @@ function getAllList (recipes){
 
 }
 
-export { ingredientArray , ustensilesArray, appareilArray, getAllList }
+ export { ingredientArray , ustensilesArray, appareilArray, getAllList }
 
 
 
