@@ -126,8 +126,11 @@ function closeTag(){
   let cross = document.querySelectorAll('.crossTag');
   cross.forEach((btn)=> btn.addEventListener('click', (e)=>{
     // je remets mon tableau à jour
+    let div = btn.closest('.tag');
+    let filtered = tagsArray.filter(item => item !== div.dataset.value);
+     tagsArray = filtered
+     console.log(tagsArray)
     // Je remove le tag 
-     let div = btn.closest('.tag');
      div.remove();
   }))
   // relancer une recherche par tag 
