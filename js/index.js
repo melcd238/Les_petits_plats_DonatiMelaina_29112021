@@ -53,6 +53,7 @@ function displaytags () {
         // ferme la dropdown
         listIngredient.classList.add('hide');
         // function searchByTag
+        closeTag()
       }
       if(e.target.classList.contains('liAppliance')){
        tagsContainer.innerHTML +=  
@@ -61,6 +62,7 @@ function displaytags () {
          // ferme la dropdown
          listAppareil.classList.add('hide');
          // function searchByTag
+        closeTag()
       }
       if(e.target.classList.contains('liUstensil')){
        tagsContainer.innerHTML +=
@@ -69,6 +71,7 @@ function displaytags () {
          // ferme la dropdown
          listUstensil.classList.add('hide');
          // function searchByTag
+         closeTag()
       }
       // tableau de tag
       tagsArray.push(e.target.dataset.value)
@@ -117,7 +120,23 @@ function displaytags () {
 
 }
 
+// function closeTag au click sur le tag
+
+function closeTag(){
+  let cross = document.querySelectorAll('.crossTag');
+  cross.forEach((btn)=> btn.addEventListener('click', (e)=>{
+    // je remets mon tableau à jour
+    // Je remove le tag 
+     let div = btn.closest('.tag');
+     div.remove();
+  }))
+  // relancer une recherche par tag 
+  
+}
+
+
 displaytags();
+closeTag();
 
 
 
