@@ -25,45 +25,117 @@ openDropdown()
 // Fermer les dropDown
 closeDropdown()
 
+// variable pour stocker le tableau de recette
+let firstRecipes = recipes;
+console.log(firstRecipes)
 
 // Filtrer par Tag
 let tagsArray = [];
-// Au click sur un li, on affiche le tag et on filtre la liste des recettes en fonction 
 
-// utiliser data-value dans li et tag 
-// recupérer tous les li plutôt que chaque li par liste
-const lis = document.querySelectorAll('.itemLi');
-const tagsContainer = document.querySelector('.tags');
+// Au click sur un li, on affiche le tag 
+const lis = Array.from(document.querySelectorAll('.itemLi'));
 const listIngredient = document.querySelector('.list-ingredient-hide');
-const listAppareil =document.querySelector('.list-appareil-hide ');
+const listAppareil = document.querySelector('.list-appareil-hide ');
 const listUstensil = document.querySelector('.list-ustensils-hide');
-lis.forEach((li) => li.addEventListener('click',(e) =>{
-   // condition pour ne pas afficher le doublon
- if(!tagsArray.includes(e.target.dataset.value)){
-  tagsArray.push(e.target.dataset.value)
-  console.log(tagsArray);
+
+
+
+
+
+function displaytags () {
+  const tagsContainer = document.querySelector('.tags');
+  lis.forEach((li) => li.addEventListener('click',(e) =>{
+    // condition pour ne pas afficher le doublon
+  if(!tagsArray.includes(e.target.dataset.value)){
      if(e.target.classList.contains('liIngredient')){
-       tagsContainer.innerHTML += 
-        `<div class="col-sm-auto btn-primary tag" data-value='${e.target.dataset.value}'>${e.target.textContent} <img src="/img/cross.svg" alt="croix de fermeture du tag" class="crossTag"> </div>`
-       // ferme la dropdown
-       listIngredient.classList.add('hide');
-     }
-     if(e.target.classList.contains('liAppliance')){
-      tagsContainer.innerHTML +=  
-        `<div class="col-sm-auto btn-success tag" data-value='${e.target.dataset.value}'>${e.target.textContent} <img src="/img/cross.svg" alt="croix de fermeture du tag" class="crossTag"> </div>`
-       ;
+        tagsContainer.innerHTML += 
+         `<div class="col-sm-auto btn-primary tag tagIngredient" data-value='${e.target.dataset.value}'>${e.target.textContent} <img src="/img/cross.svg" alt="croix de fermeture du tag" class="crossTag"> </div>`
         // ferme la dropdown
-        listAppareil.classList.add('hide');
-     }
-     if(e.target.classList.contains('liUstensil')){
-      tagsContainer.innerHTML +=
-        `<div class="col-sm-auto btn-danger tag" data-value='${e.target.dataset.value}'>${e.target.textContent} <img src="/img/cross.svg" alt="croix de fermeture du tag" class="crossTag"> </div>`
-       ;
-        // ferme la dropdown
-        listUstensil.classList.add('hide');
-     }
+        listIngredient.classList.add('hide');
+        // function searchByTag
+      }
+      if(e.target.classList.contains('liAppliance')){
+       tagsContainer.innerHTML +=  
+         `<div class="col-sm-auto btn-success tag tagAppliance" data-value='${e.target.dataset.value}'>${e.target.textContent} <img src="/img/cross.svg" alt="croix de fermeture du tag" class="crossTag"> </div>`
+        ;
+         // ferme la dropdown
+         listAppareil.classList.add('hide');
+         // function searchByTag
+      }
+      if(e.target.classList.contains('liUstensil')){
+       tagsContainer.innerHTML +=
+         `<div class="col-sm-auto btn-danger tag tagUstensil" data-value='${e.target.dataset.value}'>${e.target.textContent} <img src="/img/cross.svg" alt="croix de fermeture du tag" class="crossTag"> </div>`
+        ;
+         // ferme la dropdown
+         listUstensil.classList.add('hide');
+         // function searchByTag
+      }
+      // tableau de tag
+      tagsArray.push(e.target.dataset.value)
+      console.log(tagsArray)
+ } else {
+   // au click sur le li dans la liste, on cherche l'index correspondant dans le tableau et on supprime la valeur du tableau  
+   let filtered = tagsArray.filter(item => item !== e.target.dataset.value);
+   tagsArray = filtered
+   console.log(tagsArray)
+   // on lance une nouvelle recherche
+
+   // on remove le tag
+  if(e.target.classList.contains('liIngredient')){
+    let tags = document.querySelectorAll('.tagIngredient');
+    tags.forEach((tag)=>{
+       if(tag.dataset.value == e.target.dataset.value){
+         tag.remove()
+       }
+    })
+      // ferme la dropdown
+      listIngredient.classList.add('hide');
  }
-}))
+   if(e.target.classList.contains('liAppliance')){
+    let tags = document.querySelectorAll('.tagAppliance')
+    tags.forEach((tag)=>{
+      if(tag.dataset.value == e.target.dataset.value){
+        tag.remove()
+      }
+   })
+      // ferme la dropdown
+      listAppareil.classList.add('hide');
+   }
+   if(e.target.classList.contains('liUstensil')){
+    let tags = document.querySelectorAll('.tagUstensil')
+    tags.forEach((tag)=>{
+      if(tag.dataset.value == e.target.dataset.value){
+        tag.remove()
+      }
+   })
+       // ferme la dropdown
+       listUstensil.classList.add('hide');
+  }
+  
+ }
+ }));
+
+}
+
+displaytags();
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
 
 
 
