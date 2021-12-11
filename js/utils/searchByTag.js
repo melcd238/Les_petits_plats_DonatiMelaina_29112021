@@ -1,9 +1,14 @@
-import { replace } from './replace.js'
+import { replace } from './replace.js';
+import DisplayRecipes from './../class/displayRecipes.js';
+import { getAllList } from './sortList.js';
+import { DisplayList } from './../class/displayList.js';
+
 
 function searchByTag(recettes , option){
-  if(option.length > 0){
-      let newRecettes = recettes;
+    let recipeSelector = document.querySelector('#recipes-container')
+    let newRecettes = recettes;
       let newRecipes =[];
+  if(option.length > 0){
       newRecettes.forEach((newRecette )=> {
           // je récupère la liste des tag a tester
           let tagToTest = [];
@@ -34,9 +39,37 @@ function searchByTag(recettes , option){
       });
       // on supprime les doublons avec un set 
       newRecipes = Array.from(new Set(newRecipes))
-      console.log(newRecipes)
+      // on affiche les recettes
+      // Affichage des recettes dans le Dom
+     recipeSelector.innerHTML = '';
+     newRecipes.forEach((recipe)=>{
+        let article = new DisplayRecipes(recipe, recipeSelector);
+        article.createCardRecipe();
+     }) 
+     // Affichage des listes 
+    let arrayLi = getAllList(newRecipes);
+     let listLi = new DisplayList(arrayLi[0], arrayLi[1] , arrayLi[2]);
+     listLi.createListeLi(); 
+
   } else {
-      console.log("recherche à 0")
+      newRecipes = recettes;
+            // Affichage des recettes dans le Dom
+    recipeSelector.innerHTML = '';
+     newRecipes.forEach((recipe)=>{
+        let article = new DisplayRecipes(recipe, recipeSelector);
+        article.createCardRecipe();
+     }) 
+      // Affichage des listes
+      let arrayLi = getAllList(newRecipes);
+      const ulIngredient = document.querySelector('#dropdown-search-list-ingredients');
+      const ulAppliance = document.querySelector('#dropdown-search-list-appareil');
+      const ulUstensil = document.querySelector('#dropdown-search-list-ustensiles')
+      ulIngredient.innerHTML='';
+      ulAppliance.innerHTML='';
+      ulUstensil.innerHTML='';
+      let listLi = new DisplayList(arrayLi[0], arrayLi[1] , arrayLi[2]);
+      listLi.createListeLi(); 
+      
   }
 }
 

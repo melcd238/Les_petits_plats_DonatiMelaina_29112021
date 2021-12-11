@@ -3,7 +3,6 @@ import { ingredientArray , appareilArray , ustensilesArray, getAllList } from '.
 import DisplayRecipes from "./class/displayRecipes.js";
 import { DisplayList } from './class/displayList.js';
 import { openDropdown, closeDropdown  } from './utils/dropDown.js';
-import { replace } from './utils/replace.js'
 import { searchTag } from './utils/searchTag.js'
 import { searchByTag } from './utils/searchByTag.js'
 
@@ -65,9 +64,7 @@ function displaytags () {
        tagsContainer.innerHTML +=  
          `<div class="col-sm-auto btn-success tag tagAppliance" data-value='${e.target.dataset.value}'>${e.target.textContent} <img src="/img/cross.svg" alt="croix de fermeture du tag" class="crossTag"> </div>`
         ;
-         // ferme la dropdown
          listAppareil.classList.add('hide');
-         // function searchByTag
          searchByTag(recipes, tagsArray)
         closeTag()
       }
@@ -75,9 +72,7 @@ function displaytags () {
        tagsContainer.innerHTML +=
          `<div class="col-sm-auto btn-danger tag tagUstensil" data-value='${e.target.dataset.value}'>${e.target.textContent} <img src="/img/cross.svg" alt="croix de fermeture du tag" class="crossTag"> </div>`
         ;
-         // ferme la dropdown
          listUstensil.classList.add('hide');
-         // function searchByTag
          searchByTag(recipes, tagsArray)
          closeTag()
       }
