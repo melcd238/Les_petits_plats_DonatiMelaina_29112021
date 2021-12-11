@@ -9,23 +9,14 @@ import { searchByTag } from './utils/searchByTag.js'
 
 
 
-// Affichage des recettes dans le Dom
+// Affichage des recettes  et des listes dans le Dom
 let recipeSelector = document.querySelector('#recipes-container') 
-
 recipes.forEach((recipe) => {
     let article = new DisplayRecipes(recipe, recipeSelector);
     article.createCardRecipe();
   });
-
- // Affichage des listes
 let listLi = new DisplayList(ingredientArray, appareilArray , ustensilesArray);
 listLi.createListeLi(); 
-
-// Ouvrir les dropDown
-openDropdown()
-
-// Fermer les dropDown
-closeDropdown()
 
 // Filtrer par Tag
 let tagsArray = [];
@@ -92,7 +83,6 @@ function displaytags (lis) {
          tag.remove()
        }
     })
-      // ferme la dropdown
       listIngredient.classList.add('hide');
  }
    if(e.target.classList.contains('liAppliance')){
@@ -102,7 +92,6 @@ function displaytags (lis) {
         tag.remove()
       }
    })
-      // ferme la dropdown
       listAppareil.classList.add('hide');
    }
    if(e.target.classList.contains('liUstensil')){
@@ -112,7 +101,6 @@ function displaytags (lis) {
         tag.remove()
       }
    })
-       // ferme la dropdown
        listUstensil.classList.add('hide');
   }
  }
@@ -121,7 +109,6 @@ function displaytags (lis) {
 }
 
 // function closeTag au click sur le tag
-
 function closeTag(){
   let cross = document.querySelectorAll('.crossTag');
   cross.forEach((btn)=> btn.addEventListener('click', (e)=>{
@@ -139,39 +126,7 @@ function closeTag(){
 
 displaytags(lis);
 closeTag();
+openDropdown()
+closeDropdown()
 
 export { displaytags }
-
-
-
-
-
- 
-
-   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
