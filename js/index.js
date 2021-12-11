@@ -43,7 +43,7 @@ console.log(inputsdropdownSearch)
 
 
 // function qui affiche les tag et qui lance la recherche 
-function displaytags () {
+function displaytags (lis) {
   const tagsContainer = document.querySelector('.tags');
   lis.forEach((li) => li.addEventListener('click',(e) =>{
     // condition pour ne pas afficher le doublon
@@ -137,9 +137,10 @@ function closeTag(){
 }
 
 
-displaytags();
+displaytags(lis);
 closeTag();
 
+export { displaytags }
 
 
 

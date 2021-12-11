@@ -2,6 +2,7 @@ import { replace } from './replace.js';
 import DisplayRecipes from './../class/displayRecipes.js';
 import { getAllList } from './sortList.js';
 import { DisplayList } from './../class/displayList.js';
+import { displaytags } from './../index.js'
 
 
 function searchByTag(recettes , option){
@@ -50,6 +51,9 @@ function searchByTag(recettes , option){
     let arrayLi = getAllList(newRecipes);
      let listLi = new DisplayList(arrayLi[0], arrayLi[1] , arrayLi[2]);
      listLi.createListeLi(); 
+     const lis = Array.from(document.querySelectorAll('.itemLi'));
+     displaytags(lis)
+    
 
   } else {
       newRecipes = recettes;
@@ -69,6 +73,9 @@ function searchByTag(recettes , option){
       ulUstensil.innerHTML='';
       let listLi = new DisplayList(arrayLi[0], arrayLi[1] , arrayLi[2]);
       listLi.createListeLi(); 
+      const lis = Array.from(document.querySelectorAll('.itemLi'));
+      displaytags(lis)
+     
       
   }
 }
