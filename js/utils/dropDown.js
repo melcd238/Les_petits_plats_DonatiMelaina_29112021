@@ -4,7 +4,6 @@ const openDropdown = function (){
     const listIngredient = document.querySelector('.list-ingredient-hide');
     const listAppareil =document.querySelector('.list-appareil-hide ');
     const listUstensil = document.querySelector('.list-ustensils-hide');
-    const searchContainer = document.querySelector('.search-btns');
 
     btnDropdown.forEach((btn)=> btn.addEventListener('click', (e) =>{
         e.preventDefault();

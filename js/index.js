@@ -3,6 +3,9 @@ import { ingredientArray , appareilArray , ustensilesArray, getAllList } from '.
 import DisplayRecipes from "./class/displayRecipes.js";
 import { DisplayList } from './class/displayList.js';
 import { openDropdown, closeDropdown  } from './utils/dropDown.js';
+import { replace } from './utils/replace.js'
+import { searchTag } from './utils/searchTag.js'
+import { searchByTag } from './utils/searchByTag.js'
 
 
 
@@ -25,10 +28,6 @@ openDropdown()
 // Fermer les dropDown
 closeDropdown()
 
-// variable pour stocker le tableau de recette
-let firstRecipes = recipes;
-console.log(firstRecipes)
-
 // Filtrer par Tag
 let tagsArray = [];
 
@@ -39,20 +38,27 @@ const listAppareil = document.querySelector('.list-appareil-hide ');
 const listUstensil = document.querySelector('.list-ustensils-hide');
 
 
+// Function qui va chercher dans les inputs des dropdown 
+const inputsdropdownSearch = document.querySelectorAll('.input-search')
+console.log(inputsdropdownSearch)
 
 
-
+// function qui affiche les tag et qui lance la recherche 
 function displaytags () {
   const tagsContainer = document.querySelector('.tags');
   lis.forEach((li) => li.addEventListener('click',(e) =>{
     // condition pour ne pas afficher le doublon
   if(!tagsArray.includes(e.target.dataset.value)){
+       // tableau de tag
+        tagsArray.push(e.target.dataset.value)
      if(e.target.classList.contains('liIngredient')){
         tagsContainer.innerHTML += 
          `<div class="col-sm-auto btn-primary tag tagIngredient" data-value='${e.target.dataset.value}'>${e.target.textContent} <img src="/img/cross.svg" alt="croix de fermeture du tag" class="crossTag"> </div>`
         // ferme la dropdown
         listIngredient.classList.add('hide');
-        // function searchByTag
+        // function searchByTag 
+         searchByTag(recipes, tagsArray)
+        // function pour fermer le tag qui entraine une nouvelle recherche
         closeTag()
       }
       if(e.target.classList.contains('liAppliance')){
@@ -62,6 +68,7 @@ function displaytags () {
          // ferme la dropdown
          listAppareil.classList.add('hide');
          // function searchByTag
+         searchByTag(recipes, tagsArray)
         closeTag()
       }
       if(e.target.classList.contains('liUstensil')){
@@ -71,18 +78,17 @@ function displaytags () {
          // ferme la dropdown
          listUstensil.classList.add('hide');
          // function searchByTag
+         searchByTag(recipes, tagsArray)
          closeTag()
       }
-      // tableau de tag
-      tagsArray.push(e.target.dataset.value)
-      console.log(tagsArray)
+
  } else {
    // au click sur le li dans la liste, on cherche l'index correspondant dans le tableau et on supprime la valeur du tableau  
    let filtered = tagsArray.filter(item => item !== e.target.dataset.value);
    tagsArray = filtered
    console.log(tagsArray)
    // on lance une nouvelle recherche
-
+     searchByTag(recipes, tagsArray)
    // on remove le tag
   if(e.target.classList.contains('liIngredient')){
     let tags = document.querySelectorAll('.tagIngredient');
@@ -114,7 +120,6 @@ function displaytags () {
        // ferme la dropdown
        listUstensil.classList.add('hide');
   }
-  
  }
  }));
 
@@ -129,17 +134,26 @@ function closeTag(){
     let div = btn.closest('.tag');
     let filtered = tagsArray.filter(item => item !== div.dataset.value);
      tagsArray = filtered
-     console.log(tagsArray)
+   // relancer une recherche par tag 
+    searchByTag(recipes, tagsArray)
     // Je remove le tag 
      div.remove();
   }))
-  // relancer une recherche par tag 
-  
 }
 
 
 displaytags();
 closeTag();
+
+
+
+
+
+
+ 
+
+   
+
 
 
 

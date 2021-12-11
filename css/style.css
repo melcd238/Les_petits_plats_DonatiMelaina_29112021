@@ -7,6 +7,15 @@ ul{
     padding: 0;
     list-style-type: none;
 }
+.btn-success{
+    background-color: #68d9a4;
+}
+.btn-primary{
+    background-color: #3282f7;
+}
+.btn-danger{
+    background-color: #ed6454;
+}
 h1{
     color: #d04f4f;
     font-size: 36px;
