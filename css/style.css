@@ -130,9 +130,13 @@ header{
     margin-bottom: 20px;
 }
 .card-top{
-    width: 100%;
-    height: 178px;
-    background: #C7BEBE;
+    width: 400px;
+    height: 187px;
+}
+.card-img-top{
+    width: 398px;
+    height: 187px;
+    object-fit: auto;
 }
 .card-body{
     background: #E7E7E7;

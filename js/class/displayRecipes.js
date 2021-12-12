@@ -2,6 +2,7 @@ export default class DisplayRecipes {
     constructor(recipe, selector) {
         this.id = recipe.id;
         this.name = recipe.name;
+        this.image = recipe.image;
         this.ingredients = recipe.ingredients;
         this.time = recipe.time;
         this.description = recipe.description;
@@ -13,7 +14,9 @@ export default class DisplayRecipes {
           const cardContainer = document.createElement('div');
           cardContainer.setAttribute('class', 'col card-container')
           cardContainer.innerHTML= ` <div class="card">
-          <div class="card-top"></div>
+          <div class="card-top">
+           <img src="./images/${this.image}" alt="image de la recette" class="card-img-top" />
+          </div>
           <div class="card-body">
            <div class="title">
            <h2 class="card-title"> ${this.name}</h2>

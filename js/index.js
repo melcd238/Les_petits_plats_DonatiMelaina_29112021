@@ -3,8 +3,9 @@ import { ingredientArray , appareilArray , ustensilesArray, getAllList } from '.
 import DisplayRecipes from "./class/displayRecipes.js";
 import { DisplayList } from './class/displayList.js';
 import { openDropdown, closeDropdown  } from './utils/dropDown.js';
-import { searchTag } from './utils/searchTag.js'
-import { searchByTag } from './utils/searchByTag.js'
+import { searchTag } from './utils/searchTag.js';
+import { searchByTag } from './utils/searchByTag.js';
+import { mainSearch } from './utils/mainSearch.js';
 
 
 
