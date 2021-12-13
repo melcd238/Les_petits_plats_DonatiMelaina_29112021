@@ -3,7 +3,6 @@ import { ingredientArray , appareilArray , ustensilesArray, getAllList } from '.
 import DisplayRecipes from "./class/displayRecipes.js";
 import { DisplayList } from './class/displayList.js';
 import { openDropdown, closeDropdown  } from './utils/dropDown.js';
-import { searchTag } from './utils/searchTag.js';
 import { searchByTag } from './utils/searchByTag.js';
 import { mainSearch } from './utils/mainSearch.js';
 import { replace } from './utils/replace.js';
@@ -19,6 +18,37 @@ recipes.forEach((recipe) => {
   });
 let listLi = new DisplayList(ingredientArray, appareilArray , ustensilesArray);
 listLi.createListeLi(); 
+
+
+
+
+// Recherche principale
+const searchInput = document.querySelector('#mainSearch');
+searchInput.addEventListener('input',(e)=>{
+    let value = e.target.value;
+   let searchItem = replace(value);
+    let recipesList = [];
+    if(value.length > 2){
+      recipesList = recipes.filter((recipe)=>{
+        console.log(searchItem)
+        const matchName = replace(recipe.name).includes(searchItem);
+       // const matchDescription = replace(recipe.description).includes(searchItem);
+        //const matchIngrdient = recipe.ingredients.filter((ingredient)=>{
+        //  replace(ingredient.ingredient).includes(searchItem)
+       // })
+        if(matchName){
+          return true;
+        } else {
+          return false;
+        }
+      });
+     console.log(recipesList);
+  
+    }
+      
+    
+     
+})
 
 // Filtrer par Tag
 let tagsArray = [];
