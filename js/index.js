@@ -6,6 +6,7 @@ import { openDropdown, closeDropdown  } from './utils/dropDown.js';
 import { searchTag } from './utils/searchTag.js';
 import { searchByTag } from './utils/searchByTag.js';
 import { mainSearch } from './utils/mainSearch.js';
+import { replace } from './utils/replace.js';
 
 
 
@@ -29,9 +30,46 @@ const listAppareil = document.querySelector('.list-appareil-hide ');
 const listUstensil = document.querySelector('.list-ustensils-hide');
 
 
-// Function qui va chercher dans les inputs des dropdown 
+// Filtre des listes avec l'input des dropdown 
 const inputsdropdownSearch = document.querySelectorAll('.input-search')
-console.log(inputsdropdownSearch)
+inputsdropdownSearch.forEach((input) => input.addEventListener('input', (e) =>{
+        if(e.target.classList.contains('input-search-ingredient')){
+           let option = replace(e.target.value); 
+           let liIng = document.querySelectorAll('.liIngredient');
+           liIng.forEach((li)=>{
+             let value = li.dataset.value;
+             if(!value.includes(option)){
+                  li.style.display = "none";
+             } else {
+               li.style.display ="block";
+             }
+            })
+        }
+        if(e.target.classList.contains('input-search-appareil')){
+          let option = replace(e.target.value); 
+          let liApp = document.querySelectorAll('.liAppliance');
+          liApp.forEach((li)=>{
+            let value = li.dataset.value;
+            if(!value.includes(option)){
+                 li.style.display = "none";
+            } else {
+              li.style.display ="block";
+            }
+          })
+        }
+        if(e.target.classList.contains('input-search-ustensil')){
+          let option = replace(e.target.value); 
+          let liUs = document.querySelectorAll('.liUstensil');
+          liUs.forEach((li)=>{
+            let value = li.dataset.value;
+            if(!value.includes(option)){
+                 li.style.display = "none";
+            } else {
+              li.style.display ="block";
+            }
+          })
+        }
+}))
 
 
 // function qui affiche les tag et qui lance la recherche 
