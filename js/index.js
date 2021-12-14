@@ -30,24 +30,21 @@ searchInput.addEventListener('input',(e)=>{
     let recipesList = [];
     if(value.length > 2){
       recipesList = recipes.filter((recipe)=>{
-        console.log(searchItem)
-        const matchName = replace(recipe.name).includes(searchItem);
-       // const matchDescription = replace(recipe.description).includes(searchItem);
-        //const matchIngrdient = recipe.ingredients.filter((ingredient)=>{
-        //  replace(ingredient.ingredient).includes(searchItem)
-       // })
-        if(matchName){
-          return true;
+         const testMatchNameOrDescriptio = replace(recipe.name).includes(searchItem) || replace(recipe.description).includes(searchItem);
+         const testMatchIngredient = recipe.ingredients.some((ingredient) =>{
+                       replace(ingredient.ingredient).includes(searchItem)
+          });
+          // some() renvoit un bouleen si au moins une des valeurs du tableau correspond au searchItem 
+        if(testMatchNameOrDescriptio || testMatchIngredient){
+          return true
         } else {
-          return false;
+          return false
         }
       });
      console.log(recipesList);
   
     }
       
-    
-     
 })
 
 // Filtrer par Tag
