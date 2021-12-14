@@ -65,7 +65,25 @@ searchInput.addEventListener('input',(e)=>{
       recipeSelector.innerHTML = '';
       recipeSelector.innerHTML = `<div> <p> Auncune recette ne correspond à votre critère... vous pouvez chercher "tarte aux pommes", "poisson", etc </p></div>`;
     }
-    }
+    } else if(value.length<=0){
+      recipesList = recipes;
+      recipeSelector.innerHTML = '';
+      recipesList.forEach((recipe)=>{
+        let article = new DisplayRecipes(recipe, recipeSelector);
+        article.createCardRecipe();
+      });
+      let arrayLi = getAllList(recipesList);
+      const ulIngredient = document.querySelector('#dropdown-search-list-ingredients');
+      const ulAppliance = document.querySelector('#dropdown-search-list-appareil');
+      const ulUstensil = document.querySelector('#dropdown-search-list-ustensiles')
+      ulIngredient.innerHTML='';
+      ulAppliance.innerHTML='';
+      ulUstensil.innerHTML='';
+     let listLi = new DisplayList(arrayLi[0], arrayLi[1] , arrayLi[2]);
+     listLi.createListeLi();
+     const lis = Array.from(document.querySelectorAll('.itemLi')); 
+     displaytags (lis)
+     }
       
 })
 
