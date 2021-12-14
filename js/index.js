@@ -7,7 +7,7 @@ import { searchByTag } from './utils/searchByTag.js';
 import { mainSearch } from './utils/mainSearch.js';
 import { replace } from './utils/replace.js';
 
-
+let recipesList = [];
 
 
 // Affichage des recettes  et des listes dans le Dom
@@ -27,7 +27,6 @@ const searchInput = document.querySelector('#mainSearch');
 searchInput.addEventListener('input',(e)=>{
     let value = e.target.value;
    let searchItem = replace(value);
-    let recipesList = [];
     if(value.length > 2){
       recipesList = recipes.filter((recipe)=>{
          const testMatchNameOrDescriptio = replace(recipe.name).includes(searchItem) || replace(recipe.description).includes(searchItem);
@@ -223,9 +222,33 @@ function closeTag(){
     let filtered = tagsArray.filter(item => item !== div.dataset.value);
      tagsArray = filtered
    // relancer une recherche par tag 
-    searchByTag(recipes, tagsArray)
+   if(searchInput.value && tagsArray <= 0){
+          // mainSearch 
+      recipeSelector.innerHTML = '';
+      recipesList.forEach((recipe)=>{
+        let article = new DisplayRecipes(recipe, recipeSelector);
+        article.createCardRecipe();
+      });
+      // affichage des Liste en fonction 
+      let arrayLi = getAllList(recipesList);
+      const ulIngredient = document.querySelector('#dropdown-search-list-ingredients');
+      const ulAppliance = document.querySelector('#dropdown-search-list-appareil');
+      const ulUstensil = document.querySelector('#dropdown-search-list-ustensiles')
+      ulIngredient.innerHTML='';
+      ulAppliance.innerHTML='';
+      ulUstensil.innerHTML='';
+     let listLi = new DisplayList(arrayLi[0], arrayLi[1] , arrayLi[2]);
+     listLi.createListeLi();
+     const lis = Array.from(document.querySelectorAll('.itemLi')); 
+     displaytags (lis)
+
+     
+   } else {
+     searchByTag(recipes, tagsArray)
+   }
     // Je remove le tag 
      div.remove();
+  
   }))
 }
 
