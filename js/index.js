@@ -1,5 +1,5 @@
 import { recipes } from "./data/recipes.js";
-import { ingredientArray , appareilArray , ustensilesArray, getAllList } from './utils/sortList.js'
+import { ingredientArray , appareilArray , ustensilesArray} from './utils/sortList.js'
 import DisplayRecipes from "./class/displayRecipes.js";
 import { DisplayList } from './class/displayList.js';
 import { openDropdown, closeDropdown  } from './utils/dropDown.js';
@@ -8,6 +8,8 @@ import { mainSearch } from './utils/mainSearch.js';
 import { replace } from './utils/replace.js';
 
 let recipesList = [];
+// Filtrer par Tag
+let tagsArray = [];
 
 
 // Affichage des recettes  et des listes dans le Dom
@@ -20,74 +22,15 @@ let listLi = new DisplayList(ingredientArray, appareilArray , ustensilesArray);
 listLi.createListeLi(); 
 
 
-
-
 // Recherche principale
 const searchInput = document.querySelector('#mainSearch');
 searchInput.addEventListener('input',(e)=>{
-    let value = e.target.value;
-   let searchItem = replace(value);
-    if(value.length > 2){
-      recipesList = recipes.filter((recipe)=>{
-         const testMatchNameOrDescriptio = replace(recipe.name).includes(searchItem) || replace(recipe.description).includes(searchItem);
-         const testMatchIngredient = recipe.ingredients.some((ingredient) =>{
-                       replace(ingredient.ingredient).includes(searchItem)
-          });
-          // some() renvoit un bouleen si au moins une des valeurs du tableau correspond au searchItem 
-        if(testMatchNameOrDescriptio || testMatchIngredient){
-          return true
-        } else {
-          return false
-        }
-      });
-      // Affichage des recettes
-      console.log(recipesList);
-    if(recipesList.length> 0){
-          recipeSelector.innerHTML = '';
-          recipesList.forEach((recipe)=>{
-             let article = new DisplayRecipes(recipe, recipeSelector);
-             article.createCardRecipe();
-           })
-      // Affichage des listes
-         let arrayLi = getAllList(recipesList);
-         const ulIngredient = document.querySelector('#dropdown-search-list-ingredients');
-         const ulAppliance = document.querySelector('#dropdown-search-list-appareil');
-         const ulUstensil = document.querySelector('#dropdown-search-list-ustensiles')
-         ulIngredient.innerHTML='';
-         ulAppliance.innerHTML='';
-         ulUstensil.innerHTML='';
-        let listLi = new DisplayList(arrayLi[0], arrayLi[1] , arrayLi[2]);
-        listLi.createListeLi();
-        const lis = Array.from(document.querySelectorAll('.itemLi')); 
-        displaytags (lis)
-    } else {
-      recipeSelector.innerHTML = '';
-      recipeSelector.innerHTML = `<div> <p> Auncune recette ne correspond à votre critère... vous pouvez chercher "tarte aux pommes", "poisson", etc </p></div>`;
-    }
-    } else if(value.length<=0){
-      recipesList = recipes;
-      recipeSelector.innerHTML = '';
-      recipesList.forEach((recipe)=>{
-        let article = new DisplayRecipes(recipe, recipeSelector);
-        article.createCardRecipe();
-      });
-      let arrayLi = getAllList(recipesList);
-      const ulIngredient = document.querySelector('#dropdown-search-list-ingredients');
-      const ulAppliance = document.querySelector('#dropdown-search-list-appareil');
-      const ulUstensil = document.querySelector('#dropdown-search-list-ustensiles')
-      ulIngredient.innerHTML='';
-      ulAppliance.innerHTML='';
-      ulUstensil.innerHTML='';
-     let listLi = new DisplayList(arrayLi[0], arrayLi[1] , arrayLi[2]);
-     listLi.createListeLi();
-     const lis = Array.from(document.querySelectorAll('.itemLi')); 
-     displaytags (lis)
-     }
-      
-})
 
-// Filtrer par Tag
-let tagsArray = [];
+ mainSearch(recipesList , e.target.value);
+      
+});
+
+
 
 // Au click sur un li, on affiche le tag 
 const lis = Array.from(document.querySelectorAll('.itemLi'));
@@ -135,7 +78,7 @@ inputsdropdownSearch.forEach((input) => input.addEventListener('input', (e) =>{
             }
           })
         }
-}))
+}));
 
 
 // function qui affiche les tag et qui lance la recherche 
@@ -225,24 +168,7 @@ function closeTag(){
    if(searchInput.value && tagsArray <= 0){
           // mainSearch 
       recipeSelector.innerHTML = '';
-      recipesList.forEach((recipe)=>{
-        let article = new DisplayRecipes(recipe, recipeSelector);
-        article.createCardRecipe();
-      });
-      // affichage des Liste en fonction 
-      let arrayLi = getAllList(recipesList);
-      const ulIngredient = document.querySelector('#dropdown-search-list-ingredients');
-      const ulAppliance = document.querySelector('#dropdown-search-list-appareil');
-      const ulUstensil = document.querySelector('#dropdown-search-list-ustensiles')
-      ulIngredient.innerHTML='';
-      ulAppliance.innerHTML='';
-      ulUstensil.innerHTML='';
-     let listLi = new DisplayList(arrayLi[0], arrayLi[1] , arrayLi[2]);
-     listLi.createListeLi();
-     const lis = Array.from(document.querySelectorAll('.itemLi')); 
-     displaytags (lis)
-
-     
+    mainSearch(recipesList, searchInput.value)
    } else {
      searchByTag(recipes, tagsArray)
    }
