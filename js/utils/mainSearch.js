@@ -11,19 +11,26 @@ function mainSearch(recettes , option ){
    const searchInput = document.querySelector('#mainSearch');
    let value = option;
    let searchItem = replace(value);
+   let uniqueRecettes =[];
    if(value.length > 2){
-        recettes = recipes.filter((recipe)=>{
-        const testMatchNameOrDescriptio = replace(recipe.name).includes(searchItem) || replace(recipe.description).includes(searchItem);
-        const testMatchIngredient = recipe.ingredients.some((ingredient) =>{
-                      replace(ingredient.ingredient).includes(searchItem)
-         });
-         // some() renvoit un bouleen si au moins une des valeurs du tableau correspond au searchItem 
-       if(testMatchNameOrDescriptio || testMatchIngredient){
-         return true
-       } else {
-         return false
-       }
-     });
+      for (let i = 0; i < recipes.length; i++) {
+         if (replace(recipes[i].name).indexOf(searchItem)>= 0 || replace(recipes[i].description).indexOf(searchItem)>=0) {
+            recettes.push(recipes[i]);
+         }
+       
+         for(let i = 0; i < recipes.ingredients ; i++){
+            if( replace(recipes.ingredients[i].ingredient).indexOf(searchItem) >=0){
+                recettes.push(recipes[i])
+            }
+         }
+    }
+    // Eliminer les doublons dans recettes: 
+     for(let i = 0; i < recettes.length; i++){
+           if(uniqueRecettes.indexOf(recettes[i]) === -1){
+              uniqueRecettes.push(recettes[i]);
+           }
+     }
+       recettes = uniqueRecettes;
      // Affichage des recettes
      console.log(recettes);
    if(recettes.length> 0){
