@@ -40,10 +40,10 @@ function mainSearch(recettes , option ){
      console.log(recettes);
    if(recettes.length> 0){
          recipeSelector.innerHTML = '';
-         recettes.forEach((recipe)=>{
-            let article = new DisplayRecipes(recipe, recipeSelector);
+         for (let i = 0; i < recettes.length ; i++){
+            let article = new DisplayRecipes(recettes[i], recipeSelector);
             article.createCardRecipe();
-          })
+         }
      // Affichage des listes
         let arrayLi = getAllList(recettes);
         ulIngredient.innerHTML='';
@@ -60,11 +60,11 @@ function mainSearch(recettes , option ){
    } else if(value.length<=0){
      recettes = recipes;
      recipeSelector.innerHTML = '';
-     recettes.forEach((recipe)=>{
-       let article = new DisplayRecipes(recipe, recipeSelector);
-       article.createCardRecipe();
-     });
-     let arrayLi = getAllList(recettes);
+     for (let i = 0; i < recettes.length ; i++){
+      let article = new DisplayRecipes(recettes[i], recipeSelector);
+      article.createCardRecipe();
+   }
+    let arrayLi = getAllList(recettes);
      ulIngredient.innerHTML='';
      ulAppliance.innerHTML='';
      ulUstensil.innerHTML='';
