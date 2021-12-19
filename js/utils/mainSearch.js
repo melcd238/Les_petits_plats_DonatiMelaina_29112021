@@ -18,8 +18,6 @@ function mainSearch(recettes , option ){
                       replace(ingredient.ingredient).includes(searchItem)
          });
          // some() renvoit un bouleen si au moins une des valeurs du tableau correspond au searchItem 
-         console.log(testMatchNameOrDescriptio);
-         console.log(testMatchIngredient)
        if(testMatchNameOrDescriptio || testMatchIngredient){
          return true
        } else {
