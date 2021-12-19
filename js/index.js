@@ -8,9 +8,12 @@ import { mainSearch } from './utils/mainSearch.js';
 import { replace } from './utils/replace.js';
 
 let recipesList = [];
+
 // Filtrer par Tag
 let tagsArray = [];
 
+// premiere recherche
+let firstSearch = true;
 
 // Affichage des recettes  et des listes dans le Dom
 let recipeSelector = document.querySelector('#recipes-container') 
@@ -25,8 +28,15 @@ listLi.createListeLi();
 // Recherche principale
 const searchInput = document.querySelector('#mainSearch');
 searchInput.addEventListener('input',(e)=>{
-
- mainSearch(recipesList , e.target.value);
+  if(e.target.value <=2){
+    recipesList= [];
+    console.log(recipesList);
+    mainSearch(recipesList , e.target.value);
+  } else {
+    console.log(recipesList);
+    mainSearch(recipesList , e.target.value);
+  }
+ 
       
 });
 

@@ -15,22 +15,24 @@ function mainSearch(recettes , option ){
    if(value.length > 2){
       for (let i = 0; i < recipes.length; i++) {
          if (replace(recipes[i].name).indexOf(searchItem)>= 0 || replace(recipes[i].description).indexOf(searchItem)>=0) {
-            recettes.push(recipes[i]);
-         }
+                recettes.push(recipes[i]); 
+            } 
+        
        
          for(let i = 0; i < recipes.ingredients ; i++){
             if( replace(recipes.ingredients[i].ingredient).indexOf(searchItem) >=0){
-                recettes.push(recipes[i])
-            }
-         }
+              
+               recettes.push(recipes[i]);
+          }
+         
     }
-    // Eliminer les doublons dans recettes: 
-     for(let i = 0; i < recettes.length; i++){
-           if(uniqueRecettes.indexOf(recettes[i]) === -1){
-              uniqueRecettes.push(recettes[i]);
-           }
-     }
-       recettes = uniqueRecettes;
+      }
+      for(let i = 0; i < recettes.length; i++){
+         if(uniqueRecettes.indexOf(recettes[i]) === -1){
+            uniqueRecettes.push(recettes[i]);
+         }
+   }
+     recettes = uniqueRecettes;
      // Affichage des recettes
      console.log(recettes);
    if(recettes.length> 0){
@@ -51,10 +53,10 @@ function mainSearch(recettes , option ){
        listLi.createListeLi();
        const lis = Array.from(document.querySelectorAll('.itemLi')); 
        displaytags (lis)
-   } else {
-     recipeSelector.innerHTML = '';
-     recipeSelector.innerHTML = `<div> <p> Auncune recette ne correspond à votre critère... vous pouvez chercher "tarte aux pommes", "poisson", etc </p></div>`;
-   }
+          } else {
+             recipeSelector.innerHTML = '';
+             recipeSelector.innerHTML = `<div> <p> Auncune recette ne correspond à votre critère... vous pouvez chercher "tarte aux pommes", "poisson", etc </p></div>`;
+           }
    } else if(value.length<=0){
      recettes = recipes;
      recipeSelector.innerHTML = '';
@@ -74,6 +76,7 @@ function mainSearch(recettes , option ){
     const lis = Array.from(document.querySelectorAll('.itemLi')); 
     displaytags (lis)
     } 
+   
     
 }
 
