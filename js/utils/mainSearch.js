@@ -9,6 +9,9 @@ function mainSearch(recettes , option ){
    // La recherche se fait par le name, les ingrédients ou la description
    let recipeSelector = document.querySelector('#recipes-container')
    const searchInput = document.querySelector('#mainSearch');
+   const ulIngredient = document.querySelector('#dropdown-search-list-ingredients');
+   const ulAppliance = document.querySelector('#dropdown-search-list-appareil');
+   const ulUstensil = document.querySelector('#dropdown-search-list-ustensiles')
    let value = option;
    let searchItem = replace(value);
    let uniqueRecettes =[];
@@ -43,9 +46,6 @@ function mainSearch(recettes , option ){
           })
      // Affichage des listes
         let arrayLi = getAllList(recettes);
-        const ulIngredient = document.querySelector('#dropdown-search-list-ingredients');
-        const ulAppliance = document.querySelector('#dropdown-search-list-appareil');
-        const ulUstensil = document.querySelector('#dropdown-search-list-ustensiles')
         ulIngredient.innerHTML='';
         ulAppliance.innerHTML='';
         ulUstensil.innerHTML='';
@@ -65,9 +65,6 @@ function mainSearch(recettes , option ){
        article.createCardRecipe();
      });
      let arrayLi = getAllList(recettes);
-     const ulIngredient = document.querySelector('#dropdown-search-list-ingredients');
-     const ulAppliance = document.querySelector('#dropdown-search-list-appareil');
-     const ulUstensil = document.querySelector('#dropdown-search-list-ustensiles')
      ulIngredient.innerHTML='';
      ulAppliance.innerHTML='';
      ulUstensil.innerHTML='';
