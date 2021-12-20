@@ -7,7 +7,9 @@ font-family: 'Roboto', sans-serif;*/
     box-sizing: border-box;
 }
 body{
-    font-family: 'Lato', sans-serif;  
+    font-family: 'Lato', sans-serif; 
+    max-width: 1240px;
+    margin: auto; 
 }
 
 ul{
@@ -68,8 +70,8 @@ header{
 }
 .search-btns{
     margin-top: 24px;
-    position: relative;
     display: flex;
+    position: relative;
 }
 .dropdown-search-list input::placeholder{
     opacity: 0.7;
@@ -83,15 +85,16 @@ header{
     align-items: center;
     cursor: pointer;
     border-radius: 5px;
-    position: relative;
 }
-.dropdown{
-    
+
+.dropdown-ingredient, .appareil, .ustensiles{
+    position: relative;
     border-radius: 5px;
     width: 170px;
     height: 69px;
+    margin-right: 1.5rem;
 }
-.dropdown-search-list{
+.list-ingredient-hide, .list-appareil-hide, .list-ustensils-hide {
     position: absolute;
     border-radius: 5px;
     top:0;
@@ -99,6 +102,7 @@ header{
     width: 672px;
     z-index: 100;
 }
+
 .dropdown-search-list.overFlow{
     overflow-y: scroll;
 }
@@ -128,6 +132,9 @@ header{
 .hide{
    display: none;
 }
+.move {
+    transform: translateX(530px);
+}
 .crossTag{
     cursor: pointer;
 }
@@ -156,6 +163,7 @@ header{
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    z-index: -10px;
 }
 .title{
     display: flex;
