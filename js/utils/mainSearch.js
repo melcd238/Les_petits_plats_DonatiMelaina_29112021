@@ -16,6 +16,7 @@ function mainSearch(recettes , option ){
    let searchItem = replace(value);
    let uniqueRecettes =[];
    if(value.length > 2){
+     console.time()
       for (let i = 0; i < recipes.length; i++) {
          if (replace(recipes[i].name).indexOf(searchItem)>= 0 || replace(recipes[i].description).indexOf(searchItem)>=0) {
                 recettes.push(recipes[i]); 
@@ -38,6 +39,7 @@ function mainSearch(recettes , option ){
      recettes = uniqueRecettes;
      // Affichage des recettes
      console.log(recettes);
+     console.timeEnd()
    if(recettes.length> 0){
          recipeSelector.innerHTML = '';
          for (let i = 0; i < recettes.length ; i++){

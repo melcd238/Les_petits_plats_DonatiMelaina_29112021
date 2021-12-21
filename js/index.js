@@ -35,6 +35,7 @@ searchInput.addEventListener('input',(e)=>{
   } else {
     console.log(recipesList);
     mainSearch(recipesList , e.target.value);
+    
   }
  
       
