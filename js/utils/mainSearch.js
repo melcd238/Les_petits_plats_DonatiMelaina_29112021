@@ -15,6 +15,7 @@ function mainSearch(recettes , option ){
    let value = option;
    let searchItem = replace(value);
    if(value.length > 2){
+     console.time()
         recettes = recipes.filter((recipe)=>{
         const testMatchNameOrDescriptio = replace(recipe.name).includes(searchItem) || replace(recipe.description).includes(searchItem);
         const testMatchIngredient = recipe.ingredients.some((ingredient) =>{
@@ -29,6 +30,7 @@ function mainSearch(recettes , option ){
      });
      // Affichage des recettes
      console.log(recettes);
+     console.timeEnd()
    if(recettes.length> 0){
          recipeSelector.innerHTML = '';
          recettes.forEach((recipe)=>{
