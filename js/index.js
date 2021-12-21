@@ -25,9 +25,9 @@ listLi.createListeLi();
 // Recherche principale
 const searchInput = document.querySelector('#mainSearch');
 searchInput.addEventListener('input',(e)=>{
-
+console.time()
  mainSearch(recipesList , e.target.value);
-      
+console.timeEnd()      
 });
 
 
