@@ -16,6 +16,7 @@ function mainSearch(recettes , option ){
    let searchItem = replace(value);
    if(value.length > 2){
      console.time()
+     console.log(searchItem)
         recettes = recipes.filter((recipe)=>{
         const testMatchNameOrDescriptio = replace(recipe.name).includes(searchItem) || replace(recipe.description).includes(searchItem);
         const testMatchIngredient = recipe.ingredients.some((ingredient) =>{
