@@ -17,6 +17,7 @@ function mainSearch(recettes , option ){
    let uniqueRecettes =[];
    if(value.length > 2){
      console.time()
+     console.log(searchItem)
       for (let i = 0; i < recipes.length; i++) {
          if (replace(recipes[i].name).indexOf(searchItem)>= 0 || replace(recipes[i].description).indexOf(searchItem)>=0) {
                 recettes.push(recipes[i]); 

@@ -30,10 +30,8 @@ const searchInput = document.querySelector('#mainSearch');
 searchInput.addEventListener('input',(e)=>{
   if(e.target.value <=2){
     recipesList= [];
-    console.log(recipesList);
     mainSearch(recipesList , e.target.value);
   } else {
-    console.log(recipesList);
     mainSearch(recipesList , e.target.value);
     
   }
