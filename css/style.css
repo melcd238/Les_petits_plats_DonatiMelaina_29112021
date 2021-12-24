@@ -152,7 +152,6 @@ header{
 .card-img-top{
     width: 398px;
     height: 187px;
-    object-fit: auto;
 }
 .card-body{
     background: #E7E7E7;
@@ -163,7 +162,6 @@ header{
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    z-index: -10px;
 }
 .title{
     display: flex;
