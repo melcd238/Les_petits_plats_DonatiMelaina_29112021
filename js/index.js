@@ -147,6 +147,8 @@ function displaytags (lis) {
        }
     })
       listIngredient.classList.add('hide');
+      btnAppareil.classList.remove('move');
+      btnUstensil.classList.remove('move');
  }
    if(e.target.classList.contains('liAppliance')){
     let tags = document.querySelectorAll('.tagAppliance')
@@ -156,6 +158,7 @@ function displaytags (lis) {
       }
    })
       listAppareil.classList.add('hide');
+      btnUstensil.classList.remove('move');
    }
    if(e.target.classList.contains('liUstensil')){
     let tags = document.querySelectorAll('.tagUstensil')
