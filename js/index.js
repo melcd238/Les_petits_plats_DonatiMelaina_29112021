@@ -84,6 +84,8 @@ inputsdropdownSearch.forEach((input) => input.addEventListener('input', (e) =>{
 // function qui affiche les tag et qui lance la recherche 
 function displaytags (lis) {
   const tagsContainer = document.querySelector('.tags');
+  const btnAppareil = document.querySelector('.appareil');
+  const btnUstensil = document.querySelector('.ustensiles');
   lis.forEach((li) => li.addEventListener('click',(e) =>{
     // condition pour ne pas afficher le doublon
   if(!tagsArray.includes(e.target.dataset.value)){
@@ -94,6 +96,8 @@ function displaytags (lis) {
          `<div class="col-sm-auto btn-primary tag tagIngredient" data-value='${e.target.dataset.value}'>${e.target.textContent} <img src="/img/cross.svg" alt="croix de fermeture du tag" class="crossTag"> </div>`
         // ferme la dropdown
         listIngredient.classList.add('hide');
+        btnAppareil.classList.remove('move');
+        btnUstensil.classList.remove('move');
         // function searchByTag 
          searchByTag(recipes, tagsArray)
         // function pour fermer le tag qui entraine une nouvelle recherche
@@ -104,6 +108,7 @@ function displaytags (lis) {
          `<div class="col-sm-auto btn-success tag tagAppliance" data-value='${e.target.dataset.value}'>${e.target.textContent} <img src="/img/cross.svg" alt="croix de fermeture du tag" class="crossTag"> </div>`
         ;
          listAppareil.classList.add('hide');
+         btnUstensil.classList.remove('move');
          searchByTag(recipes, tagsArray)
         closeTag()
       }
@@ -132,6 +137,8 @@ function displaytags (lis) {
        }
     })
       listIngredient.classList.add('hide');
+      btnAppareil.classList.remove('move');
+      btnUstensil.classList.remove('move');
  }
    if(e.target.classList.contains('liAppliance')){
     let tags = document.querySelectorAll('.tagAppliance')
@@ -141,6 +148,7 @@ function displaytags (lis) {
       }
    })
       listAppareil.classList.add('hide');
+      btnUstensil.classList.remove('move');
    }
    if(e.target.classList.contains('liUstensil')){
     let tags = document.querySelectorAll('.tagUstensil')
