@@ -27,7 +27,7 @@ const closeDropdown = function (){
     const listUstensil = document.querySelector('.list-ustensils-hide');
     const arrowUps = document.querySelectorAll('.arrowUp');
     const btnAppareil = document.querySelector('.appareil');
-    const btnUstensil = document.querySelector('.ustensiles')
+    const btnUstensil = document.querySelector('.ustensiles');
 
     arrowUps.forEach((arrowUp) => arrowUp.addEventListener('click', (e) => {
         e.preventDefault();
